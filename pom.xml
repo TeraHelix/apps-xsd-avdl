@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>io.terahelix.apps.xsdavdl</groupId>
+    <artifactId>xsd-avdl</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>xsd-avdl</name>
+
+	<properties>
+
+		<!-- If you want to supplement your model with additional items, this is a default import -->
+		<xsd.convert.defaultNamespaceImport>IO.TeraHelix</xsd.convert.defaultNamespaceImport>
+
+		<!-- This class is called to generate Documentation. Override if you have your own-->
+		<xsd.convert.docAndSourceLinksProviderClass>io.terahelix.xsd.spear.DefaultDocAndSourceLinksProvider</xsd.convert.docAndSourceLinksProviderClass>
+
+		<!-- Change these items below to map / replace your XSD schema / package
+			 names as appropriate -->
+		<xsd.convert.sourceStartsWith>io.terahelix.schemas.xsd_test</xsd.convert.sourceStartsWith>
+		<xsd.convert.targetPackage>IO.TeraHelix.XSD_Test</xsd.convert.targetPackage>
+		<xsd.convert.targetDirectory>XSD_Test</xsd.convert.targetDirectory>
+		<xsd.convert.targetNamespace>http://schemas.terahelix.io/XSD-Test</xsd.convert.targetNamespace>
+
+		<!-- The version of the Spear Library to Use. May need to replace this with a
+			 production version. 1.0-SNAPSHOT is simply the latest off the development branch. -->
+		<terahelix-spear-version>1.0-SNAPSHOT</terahelix-spear-version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.core.version>3.3.9</maven.core.version>
+		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+		<maven.dependency.plugin.version>3.1.1</maven.dependency.plugin.version>
+		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
+		<maven.failsafe.plugin.version>2.22.0</maven.failsafe.plugin.version>
+		<avro.version>1.9.2</avro.version>
+
+		<jaxb.version>2.3.2</jaxb.version>
+		
+		<maven.compiler.initial.memory>1024M</maven.compiler.initial.memory>
+	    	<maven.compiler.max.memory>2048M</maven.compiler.max.memory>
+	    		
+	</properties>
+ 
+    <modules>
+		
+    	<module>input-xsd</module>
+    	<module>output-avdl</module>
+    	<module>test-avdl-bindings</module>
+    	
+    </modules>
+ 
+    <build>
+        <pluginManagement>
+            <plugins>
+            
+            	<plugin>
+					<groupId>io.terahelix</groupId>
+					<artifactId>terahelix-spear-xsd-compilers-maven-plugin</artifactId>
+					<version>${terahelix-spear-version}</version>
+				</plugin>
+
+				<plugin>
+				    <artifactId>maven-dependency-plugin</artifactId>
+				    <version>${maven.dependency.plugin.version}</version>
+				</plugin>
+				
+				     <plugin>
+						<groupId>io.terahelix</groupId>
+						<artifactId>terahelix-spear-maven-plugin</artifactId>
+						<version>${terahelix-spear-version}</version>
+						<executions>
+							<execution>
+								<id>terahelix-spear-maven-plugin-execution</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+							</execution>
+						</executions>
+		            </plugin>
+
+				<plugin>
+						<groupId>io.terahelix</groupId>
+						<artifactId>terahelix-spear-avdl-maven-plugin</artifactId>
+						<version>${terahelix-spear-version}</version>
+						<executions>
+							<execution>
+								<id>terahelix-spear-avdl-maven-plugin</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+		            
+ 
+				
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+	              	<configuration>
+			          	<fork>true</fork>
+			          	<meminitial>${maven.compiler.initial.memory}</meminitial>
+			        	<maxmem>${maven.compiler.max.memory}</maxmem>
+			        	<source>1.8</source>
+					<target>1.8</target>
+			        </configuration>
+                </plugin>
+              
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven.failsafe.plugin.version}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+ 
+ 
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+	
+		<dependencies>
+	
+			<!-- Spear Dependencies -->
+			<dependency>
+				<groupId>io.terahelix</groupId>
+				<artifactId>terahelix-build</artifactId>
+				<version>${terahelix-spear-version}</version>
+			</dependency>
+	
+			<dependency>
+				<groupId>io.terahelix</groupId>
+				<artifactId>terahelix-spear-core</artifactId>
+				<version>${terahelix-spear-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.terahelix</groupId>
+				<artifactId>terahelix-spear-xsd-types</artifactId>
+				<version>${terahelix-spear-version}</version>
+			</dependency>
+
+			<!-- End of Spear Dependencies -->
+			<dependency>
+				<groupId>io.terahelix.apps.xsdavdl</groupId>
+				<artifactId>input-xsd</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.terahelix.apps.xsdavdl</groupId>
+				<artifactId>output-avdl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			 <dependency>
+		            <groupId>org.apache.avro</groupId>
+		            <artifactId>avro</artifactId>
+		            <version>${avro.version}</version>
+		        </dependency>
+            
+	            <dependency>
+    			<groupId>jakarta.xml.bind</groupId>
+    			<artifactId>jakarta.xml.bind-api</artifactId>
+    			<version>${jaxb.version}</version>
+			</dependency>
+		
+			<dependency>
+			    <groupId>org.glassfish.jaxb</groupId>
+		    	<artifactId>jaxb-runtime</artifactId>
+		    	<version>${jaxb.version}</version>
+			</dependency>
+			
+			<dependency>
+    			<groupId>org.glassfish.jaxb</groupId>
+    			<artifactId>jaxb-xjc</artifactId>
+    			<version>${jaxb.version}</version>
+	    	</dependency>
+	    	
+            
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>2.11.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.11.0</version>
+            </dependency>
+
+        </dependencies>
+        
+    </dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>dist</id>
+			<url>https://terahelix.maven.distrepos.com/terahelix</url>
+		</repository>
+		<snapshotRepository>
+			<id>dist</id>
+			<url>https://terahelix.maven.distrepos.com/terahelix</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+</project>

@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.terahelix.apps.xsdavdl</groupId>
+		<artifactId>xsd-avdl</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+ 
+    <artifactId>output-avdl</artifactId>
+    <packaging>jar</packaging>
+    <name>output-avdl</name>
+
+	<build>
+		 <plugins>
+ 			
+ 			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>src/main/spear</directory>
+						</fileset>
+						<fileset>
+							<directory>target</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+ 
+		 	<plugin>
+				<groupId>io.terahelix</groupId>
+				<artifactId>terahelix-spear-xsd-compilers-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>terahelix-spear-xsd-compilers-maven-plugin-execution-codelist</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>jaxb-spear</goal>
+						</goals>
+					</execution>
+				</executions>
+				
+				<configuration>
+					<xsdSourcePath>../input-xsd/src/main/resources</xsdSourcePath>
+					<sourcePackage>io</sourcePackage>
+					<sourceDirectory>../input-xsd/src/main/java</sourceDirectory>
+					<outputDirectory>src/main/spear</outputDirectory>
+					
+					<defaultNamespaceImport>${xsd.convert.defaultNamespaceImport}</defaultNamespaceImport>
+					<docAndSourceLinksProviderClass>${xsd.convert.docAndSourceLinksProviderClass}</docAndSourceLinksProviderClass>
+					
+					<packageMapperSpecs>
+						<packageMapperSpec>
+							<sourceStartsWith>${xsd.convert.sourceStartsWith}</sourceStartsWith>
+							<targetPackage>${xsd.convert.targetPackage}</targetPackage>
+							<targetDirectory>${xsd.convert.targetDirectory}</targetDirectory>
+							<targetNamespace>${xsd.convert.targetNamespace}</targetNamespace>
+						</packageMapperSpec>
+ 
+					</packageMapperSpecs>
+				</configuration>
+				
+				<dependencies>
+					<dependency>
+						<groupId>io.terahelix</groupId>
+						<artifactId>terahelix-spear-xsd-tests-jaxb</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+				
+			</plugin>
+		   
+            <plugin>
+                <groupId>io.terahelix</groupId>
+                <artifactId>terahelix-spear-maven-plugin</artifactId>
+            </plugin>
+            
+            <plugin>
+    			<artifactId>maven-assembly-plugin</artifactId>
+    			<executions>
+    				<execution>
+    					<id>package-items-up</id>
+    					<phase>package</phase>
+    					<goals>
+    						<goal>single</goal>
+    					</goals>
+    					<configuration>
+    						<descriptors>
+    							<descriptor>src/main/assembly/assembly.xml</descriptor>
+    						</descriptors>
+    						<archiverConfig>
+    							<compress>false</compress>
+    						</archiverConfig>
+    					</configuration>
+    				</execution>
+    			</executions>
+    		</plugin>
+
+			 <plugin>
+				 <groupId>io.terahelix</groupId>
+				 <artifactId>terahelix-spear-avdl-maven-plugin</artifactId>
+			 </plugin>
+
+
+
+
+		 </plugins>
+	</build>
+
+
+    <dependencies>
+        
+        <dependency>
+            <groupId>io.terahelix</groupId>
+            <artifactId>terahelix-spear-core</artifactId>
+        </dependency>
+        
+        <dependency>
+			<groupId>io.terahelix.apps.xsdavdl</groupId>
+			<artifactId>input-xsd</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.terahelix</groupId>
+			<artifactId>terahelix-spear-xsd-types</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+		</dependency>
+
+ 
+    </dependencies>
+
+</project>
