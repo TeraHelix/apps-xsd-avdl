@@ -1,6 +1,6 @@
 # TeraHelix Apps XSD-AVDL Project
 
-This template project demonstrated how TeraHelix Spear can be used to generate Avro / AVDL bindings from a set of input XML Schema (XSD) inputs. 
+This template project demonstrates how TeraHelix Spear can be used to generate Avro / AVDL bindings from a set of input XML Schema (XSD) inputs. 
 
 ![XSD-AVDL Build - Windows - Java 11](https://github.com/TeraHelix/apps-xsd-avdl/workflows/XSD-AVDL%20Build%20-%20Windows%20-%20Java%2011/badge.svg)
 ![XSD-AVDL Build - Linux - Java 11](https://github.com/TeraHelix/apps-xsd-avdl/workflows/XSD-AVDL%20Build%20-%20Linux%20-%20Java%2011/badge.svg)
