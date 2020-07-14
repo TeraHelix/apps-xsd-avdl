@@ -46,7 +46,7 @@
 				
 				<configuration>
 					<xsdSourcePath>../input-xsd/src/main/resources</xsdSourcePath>
-					<sourcePackage>io</sourcePackage>
+					<sourcePackage>generated</sourcePackage>
 					<sourceDirectory>../input-xsd/src/main/java</sourceDirectory>
 					<outputDirectory>src/main/spear</outputDirectory>
 					
@@ -65,11 +65,15 @@
 				</configuration>
 				
 				<dependencies>
+
 					<dependency>
-						<groupId>io.terahelix</groupId>
-						<artifactId>terahelix-spear-xsd-tests-jaxb</artifactId>
+						<groupId>io.terahelix.apps.xsdavdl</groupId>
+						<artifactId>input-xsd</artifactId>
 						<version>${project.version}</version>
 					</dependency>
+
+
+
 				</dependencies>
 				
 			</plugin>
@@ -105,9 +109,6 @@
 				 <artifactId>terahelix-spear-avdl-maven-plugin</artifactId>
 			 </plugin>
 
-
-
-
 		 </plugins>
 	</build>
 
@@ -122,9 +123,8 @@
         <dependency>
 			<groupId>io.terahelix.apps.xsdavdl</groupId>
 			<artifactId>input-xsd</artifactId>
-			<version>1.0-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>io.terahelix</groupId>
 			<artifactId>terahelix-spear-xsd-types</artifactId>

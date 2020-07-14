@@ -18,10 +18,10 @@
 
 		<!-- Change these items below to map / replace your XSD schema / package
 			 names as appropriate -->
-		<xsd.convert.sourceStartsWith>io.terahelix.schemas.xsd_test</xsd.convert.sourceStartsWith>
-		<xsd.convert.targetPackage>IO.TeraHelix.XSD_Test</xsd.convert.targetPackage>
-		<xsd.convert.targetDirectory>XSD_Test</xsd.convert.targetDirectory>
-		<xsd.convert.targetNamespace>http://schemas.terahelix.io/XSD-Test</xsd.convert.targetNamespace>
+		<xsd.convert.sourceStartsWith></xsd.convert.sourceStartsWith>
+		<xsd.convert.targetPackage>Generated</xsd.convert.targetPackage>
+		<xsd.convert.targetDirectory>Generated</xsd.convert.targetDirectory>
+		<xsd.convert.targetNamespace></xsd.convert.targetNamespace>
 
 		<!-- The version of the Spear Library to Use. May need to replace this with a
 			 production version. 1.0-SNAPSHOT is simply the latest off the development branch. -->
