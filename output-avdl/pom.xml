@@ -52,7 +52,8 @@
 					
 					<defaultNamespaceImport>${xsd.convert.defaultNamespaceImport}</defaultNamespaceImport>
 					<docAndSourceLinksProviderClass>${xsd.convert.docAndSourceLinksProviderClass}</docAndSourceLinksProviderClass>
-					
+
+					<!-- Empty for now -->
 					<packageMapperSpecs>
 						<packageMapperSpec>
 							<sourceStartsWith>${xsd.convert.sourceStartsWith}</sourceStartsWith>
