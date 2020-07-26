@@ -21,6 +21,16 @@
 			<artifactId>output-avdl</artifactId>
 		</dependency>
 
+        <dependency>
+            <groupId>io.terahelix</groupId>
+            <artifactId>terahelix-spear-xsd-types</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.terahelix</groupId>
+            <artifactId>terahelix-spear-xsd-mappers</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -171,6 +171,12 @@
 				<version>${terahelix-spear-version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>io.terahelix</groupId>
+				<artifactId>terahelix-spear-xsd-mappers</artifactId>
+				<version>${terahelix-spear-version}</version>
+			</dependency>
+
 			<!-- End of Spear Dependencies -->
 			<dependency>
 				<groupId>io.terahelix.apps.xsdavdl</groupId>

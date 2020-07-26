@@ -47,8 +47,8 @@
 	
 	<xsd:complexType name="Car">
 		<xsd:sequence>
-			<xsd:element name="registrationNumber" type="xsd:string" />
-			<xsd:element name="doors" type="xsd:int" />
+			<xsd:element name="registrationNumber" type="xsd:string" minOccurs="1"/>
+			<xsd:element name="doors" type="xsd:int"  minOccurs="1"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	
@@ -57,7 +57,15 @@
 			<xsd:element name="registrationNumber" type="xsd:string" />
 		</xsd:sequence>
 	</xsd:complexType>
- 
-  
+
+
+	<xsd:element name="carRootElement" > <!-- JAXB needs root elements if you want to do round-trips -->
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="carElement"  type="Car"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
 </xsd:schema>
 

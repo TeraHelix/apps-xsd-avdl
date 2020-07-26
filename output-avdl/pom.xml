@@ -14,23 +14,13 @@
     <packaging>jar</packaging>
     <name>output-avdl</name>
 
+	<properties>
+		<spear.jaxb.output>target/generated-sources/jaxb-spear</spear.jaxb.output>
+	</properties>
+
 	<build>
 		 <plugins>
- 			
- 			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>src/main/spear</directory>
-						</fileset>
-						<fileset>
-							<directory>target</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
- 
+
 		 	<plugin>
 				<groupId>io.terahelix</groupId>
 				<artifactId>terahelix-spear-xsd-compilers-maven-plugin</artifactId>
@@ -45,10 +35,20 @@
 				</executions>
 				
 				<configuration>
-					<xsdSourcePath>../input-xsd/src/main/resources</xsdSourcePath>
-					<sourcePackage>generated</sourcePackage>
-					<sourceDirectory>../input-xsd/src/main/java</sourceDirectory>
-					<outputDirectory>src/main/spear</outputDirectory>
+
+					<sourceArtifact>
+						<groupId>io.terahelix.apps.xsdavdl</groupId>
+						<artifactId>input-xsd</artifactId>
+						<version>${project.version}</version>
+						<type>zip</type>
+						<classifier>source-index</classifier>
+					</sourceArtifact>
+
+					<xsdSourcePath>XSD</xsdSourcePath>  <!-- If Source Artifact Specified, these are relative to that. -->
+					<sourceDirectory>java-source</sourceDirectory>
+
+					<sourcePackage>io</sourcePackage>
+					<outputDirectory>${spear.jaxb.output}</outputDirectory>
 					
 					<defaultNamespaceImport>${xsd.convert.defaultNamespaceImport}</defaultNamespaceImport>
 					<docAndSourceLinksProviderClass>${xsd.convert.docAndSourceLinksProviderClass}</docAndSourceLinksProviderClass>
@@ -63,18 +63,15 @@
 						</packageMapperSpec>
  
 					</packageMapperSpecs>
+
 				</configuration>
 				
 				<dependencies>
-
 					<dependency>
 						<groupId>io.terahelix.apps.xsdavdl</groupId>
 						<artifactId>input-xsd</artifactId>
 						<version>${project.version}</version>
 					</dependency>
-
-
-
 				</dependencies>
 				
 			</plugin>
@@ -82,8 +79,16 @@
             <plugin>
                 <groupId>io.terahelix</groupId>
                 <artifactId>terahelix-spear-maven-plugin</artifactId>
+				<configuration>
+					<input>${spear.jaxb.output}</input>
+				</configuration>
             </plugin>
-            
+
+            <plugin>
+                <groupId>io.terahelix</groupId>
+                <artifactId>terahelix-spear-avdl-maven-plugin</artifactId>
+            </plugin>
+
             <plugin>
     			<artifactId>maven-assembly-plugin</artifactId>
     			<executions>
@@ -98,17 +103,14 @@
     							<descriptor>src/main/assembly/assembly.xml</descriptor>
     						</descriptors>
     						<archiverConfig>
-    							<compress>false</compress>
+    							<compress>true</compress>
     						</archiverConfig>
     					</configuration>
     				</execution>
     			</executions>
     		</plugin>
 
-			 <plugin>
-				 <groupId>io.terahelix</groupId>
-				 <artifactId>terahelix-spear-avdl-maven-plugin</artifactId>
-			 </plugin>
+
 
 		 </plugins>
 	</build>
