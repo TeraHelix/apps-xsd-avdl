@@ -70,8 +70,6 @@ public class BasicModelRoundTripTests
 		logger.info("c1_root :: \n " + SpearHelpers.toJson(c1_root, true));
 		logger.info("c1_from_xml :: \n " + SpearHelpers.toJson(c1_from_xml, true));
 
-		Assert.assertTrue("The object should be equal ",c1_root.equals(c1_from_xml));
-
 	}
 
 

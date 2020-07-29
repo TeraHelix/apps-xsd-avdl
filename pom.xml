@@ -26,7 +26,7 @@
 
 		<!-- The version of the Spear Library to Use. May need to replace this with a
 			 production version. 1.0-SNAPSHOT is simply the latest off the development branch.
-			  Verified version is 1.0.2
+			  Verified version is 1.0.3
 			  -->
 		<terahelix-spear-version>1.0-SNAPSHOT</terahelix-spear-version>
 
