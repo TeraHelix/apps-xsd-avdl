@@ -54,7 +54,7 @@ public class BasicModelRoundTripTests
 		Assert.assertNotNull(c1);
 		Assert.assertNotNull(c1_root);
 
-		io.terahelix.schemas.xsd_test.CarRootElement jaxb_car = xmlMapper.convertToJAXBObject(c1_root);
+		io.terahelix.apps.xsdavdl.CarRootElement jaxb_car = xmlMapper.convertToJAXBObject(c1_root);
 
 		Assert.assertNotNull(jaxb_car);
 

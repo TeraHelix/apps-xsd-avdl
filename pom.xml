@@ -18,7 +18,8 @@
 
 		<!-- Change these items below to map / replace your XSD schema / package
 			 names as appropriate -->
-		<xsd.convert.sourceStartsWith></xsd.convert.sourceStartsWith>
+		<xsd.jaxb.generated.package>io.terahelix.apps.xsdavdl</xsd.jaxb.generated.package>
+		<xsd.convert.sourceStartsWith>${xsd.jaxb.generated.package}</xsd.convert.sourceStartsWith>
 		<xsd.convert.targetPackage>Generated</xsd.convert.targetPackage>
 		<xsd.convert.targetDirectory>Generated</xsd.convert.targetDirectory>
 		<xsd.convert.targetNamespace></xsd.convert.targetNamespace>

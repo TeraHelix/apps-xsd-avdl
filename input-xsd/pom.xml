@@ -28,6 +28,7 @@
 							<goal>xsd-java</goal>
 						</goals>
 						<configuration>
+							<jaxbGeneratedPackage>${xsd.jaxb.generated.package}</jaxbGeneratedPackage>
 							<xsdInputDirectory>src/main/resources/XSD</xsdInputDirectory>
 							<outputDirectory>target/generated-sources/jaxb</outputDirectory>
 							<filterJaxbBindingsExtensions>true</filterJaxbBindingsExtensions>

@@ -11,7 +11,7 @@ public class AssertClassesGeneratedTest
 	@Test
 	public void testGenExists() throws Exception
 	{
-		Assert.assertNotNull(io.terahelix.schemas.xsd_test.VehicleContainer.class); //Jaxb
+		Assert.assertNotNull(io.terahelix.apps.xsdavdl.VehicleContainer.class); //Jaxb
 		Assert.assertNotNull(Generated.AVRO.VehicleContainer.class); //AVRO
 		Assert.assertNotNull(Generated.VehicleContainer.class); //Spear
 		//Note: Package Names can be tweaked in configurations.
