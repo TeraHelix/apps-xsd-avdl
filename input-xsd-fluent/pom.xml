@@ -1,0 +1,148 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.terahelix.apps.xsdavdl</groupId>
+		<artifactId>xsd-avdl</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+ 
+    <artifactId>input-xsd-fluent</artifactId>
+    <packaging>jar</packaging>
+    <name>input-xsd-fluent</name>
+
+	<build>
+		 <plugins>
+			 <plugin>
+				 <groupId>org.codehaus.mojo</groupId>
+				 <artifactId>build-helper-maven-plugin</artifactId>
+				 <version>3.2.0</version>
+				 <executions>
+					 <execution>
+						 <id>add-source</id>
+						 <phase>generate-sources</phase>
+						 <goals>
+							 <goal>add-source</goal>
+						 </goals>
+						 <configuration>
+							 <sources>
+								 <source>${basedir}/target/generated-sources/jaxb</source>
+							 </sources>
+						 </configuration>
+					 </execution>
+				 </executions>
+			 </plugin>
+
+			 <plugin>
+				 <groupId>org.codehaus.mojo</groupId>
+				 <artifactId>jaxb2-maven-plugin</artifactId>
+				 <version>2.5.0</version>
+				 <executions>
+					 <execution>
+						 <id>xjc-core</id>
+						 <goals>
+							 <goal>xjc</goal>
+						 </goals>
+						 <configuration>
+							 <packageName>${xsd.jaxb.generated.package.fluent}</packageName>
+							 <xjbSources>
+								 <xjbSource>src/main/resources/XSD/global.xjb</xjbSource>
+								 <xjbSource>src/main/resources/XSD/datamodel-current.xjb</xjbSource>
+							 </xjbSources>
+							 <sources>
+								 <source>src/main/resources/XSD/th-test-fluent-defs.xsd</source>
+							 </sources>
+							 <outputDirectory>${basedir}/target/generated-sources/jaxb</outputDirectory>
+							 <clearOutputDir>false</clearOutputDir>
+							 <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+							 <extension>true</extension>
+							 <arguments>
+								 <argument>-XtoString</argument>
+								 <argument>-Xequals</argument>
+								 <argument>-XhashCode</argument>
+								 <argument>-Xfluent-api</argument>
+								 <argument>-Xannotate</argument>
+								 <argument>-Xinject-code</argument>
+							 </arguments>
+							 <generateEpisode>false</generateEpisode>
+						 </configuration>
+					 </execution>
+				 </executions>
+
+				 <dependencies>
+					 <dependency>
+						 <groupId>org.jvnet.jaxb2_commons</groupId>
+						 <artifactId>jaxb2-basics</artifactId>
+						 <version>LATEST</version>
+					 </dependency>
+					 <dependency>
+						 <groupId>org.jvnet.jaxb2_commons</groupId>
+						 <artifactId>jaxb2-basics-annotate</artifactId>
+						 <version>LATEST</version>
+					 </dependency>
+					 <dependency>
+						 <groupId>org.jvnet.jaxb2_commons</groupId>
+						 <artifactId>jaxb2-fluent-api</artifactId>
+						 <version>LATEST</version>
+					 </dependency>
+				 </dependencies>
+
+			 </plugin>
+
+           <plugin>
+    			<artifactId>maven-assembly-plugin</artifactId>
+    			<executions>
+    				<execution>
+    					<id>package-items-up</id>
+    					<phase>package</phase>
+    					<goals>
+    						<goal>single</goal>
+    					</goals>
+    					<configuration>
+    						<descriptors>
+    							<descriptor>src/main/assembly/assembly.xml</descriptor>
+    						</descriptors>
+    						<archiverConfig>
+    							<compress>true</compress>
+    						</archiverConfig>
+    					</configuration>
+    				</execution>
+    			</executions>
+    		</plugin>
+			
+		</plugins>
+		
+	</build>
+
+
+    <dependencies>
+        
+        <dependency>
+            <groupId>io.terahelix</groupId>
+            <artifactId>terahelix-spear-core</artifactId>
+        </dependency>
+
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-annotate</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-fluent-api</artifactId>
+			<version>LATEST</version>
+		</dependency>
+ 
+    </dependencies>
+
+</project>

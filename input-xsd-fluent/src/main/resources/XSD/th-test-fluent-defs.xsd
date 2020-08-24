@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		   xmlns:annox="http://annox.dev.java.net"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns:hashCode="http://jaxb2-commons.dev.java.net/basic/hashCode"
+           xmlns:equals="http://jaxb2-commons.dev.java.net/basic/equals"
+           xmlns:toString="http://jaxb2-commons.dev.java.net/basic/toString"
+           xmlns:basic="http://jaxb2-commons.dev.java.net/basic"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified"
+           xmlns="http://schemas.terahelix.io/XSD-Test"
+		   targetNamespace="http://schemas.terahelix.io/XSD-Test"
+           jaxb:extensionBindingPrefixes="basic equals hashCode toString annox">
+
+	 
+	<xsd:element name="motorcycleRootElement" >
+        <xsd:complexType>
+            <xsd:sequence>
+               <xsd:element name="motorcycleElement"  type="Motorcycle"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+	<xsd:complexType name="AbstractVehicleContainer" abstract="true">
+		  <xsd:annotation>
+      		<xsd:documentation xml:lang="en">This is an abstract vehicle container object.</xsd:documentation>
+    	</xsd:annotation>
+    	<xsd:sequence>
+      		<xsd:element name="name" type="xsd:string" />
+      		<xsd:element name="container_dateTime" type="xsd:dateTime" />
+      		<xsd:element name="container_date" type="xsd:date" />
+      		<xsd:element name="container_time" type="xsd:time" />
+      	</xsd:sequence>
+	</xsd:complexType>
+
+	  <xsd:complexType name="VehicleContainer">
+		<xsd:annotation>
+      		<xsd:documentation xml:lang="en">The Vehicle Container implementation</xsd:documentation>
+    	</xsd:annotation>
+	    <xsd:complexContent>
+	      <xsd:extension base="AbstractVehicleContainer">
+	        <xsd:choice maxOccurs="unbounded">
+	          <xsd:element name="car" type="Car" />
+	          <xsd:element name="motorcycle" type="Motorcycle" />
+	        </xsd:choice>
+	      </xsd:extension>
+	    </xsd:complexContent>
+	</xsd:complexType>
+	
+	 <xsd:complexType name="VehicleHolder">
+		<xsd:annotation>
+      		<xsd:documentation xml:lang="en">The Vehicle Container implementation</xsd:documentation>
+    	</xsd:annotation>
+	    <xsd:complexContent>
+	      <xsd:extension base="AbstractVehicleContainer">
+	        <xsd:choice maxOccurs="1" minOccurs="1">
+	          <xsd:element name="car" type="Car" />
+	          <xsd:element name="motorcycle" type="Motorcycle" />
+	        </xsd:choice>
+	      </xsd:extension>
+	    </xsd:complexContent>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="Car">
+		<xsd:sequence>
+			<xsd:element name="registrationNumber" type="xsd:string" />
+			<xsd:element name="doors" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Motorcycle">
+		<xsd:sequence>
+			<xsd:element name="registrationNumber" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+ 
+
+ 	
+ 	
+ 
+  
+</xsd:schema>
+
