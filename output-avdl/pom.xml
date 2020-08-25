@@ -87,6 +87,16 @@
             <plugin>
                 <groupId>io.terahelix</groupId>
                 <artifactId>terahelix-spear-avdl-maven-plugin</artifactId>
+				<configuration>
+					<targetFileName>OutputAVDL.avdl</targetFileName>
+					<namespaceMappers>
+						<namespaceMapper>
+							<sourceNamespaceStartsWith>Generated</sourceNamespaceStartsWith>
+							<targetNamespace>XSD.AVDL</targetNamespace>
+							<targetProtocol>XSDAVDLProtocol</targetProtocol>
+						</namespaceMapper>
+					</namespaceMappers>
+				</configuration>
             </plugin>
 
             <plugin>
