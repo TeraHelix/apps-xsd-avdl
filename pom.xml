@@ -50,7 +50,8 @@
 	</properties>
  
     <modules>
-		
+
+		<module>xjc-utils</module>
     	<module>input-xsd</module>
 		<module>input-xsd-fluent</module>
     	<module>output-avdl</module>

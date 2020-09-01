@@ -37,6 +37,44 @@
 			 </plugin>
 
 			 <plugin>
+				 <artifactId>maven-antrun-plugin</artifactId>
+				 <executions>
+					 <execution>
+						 <phase>generate-sources</phase>
+						 <configuration>
+							 <tasks>
+								 <property name="plugin_classpath" refid="maven.plugin.classpath"/>
+
+								 <mkdir dir="${basedir}/target/xjc-workspace"/>
+								 <copy todir="${basedir}/target/xjc-workspace">
+									 <fileset dir="${basedir}/src/main/resources/XSD"/>
+								 </copy>
+
+								 <java classname="io.terahelix.spear.xsd.xjc.XJBEnumCodeGenEnricher">
+									 <arg value="${basedir}/target/xjc-workspace/datamodel-current.xjb"/>
+									 <arg value="${basedir}/target/xjc-workspace/datamodel-current-enriched.xjb"/>
+									 <classpath>
+										 <pathelement path="${plugin_classpath}"/>
+									 </classpath>
+								 </java>
+							 </tasks>
+						 </configuration>
+						 <goals>
+							 <goal>run</goal>
+						 </goals>
+					 </execution>
+				 </executions>
+				 <dependencies>
+					 <dependency>
+						 <groupId>io.terahelix.apps.xsdavdl</groupId>
+						 <artifactId>xjc-utils</artifactId>
+						 <version>${project.version}</version>
+						 <type>jar</type>
+					 </dependency>
+				 </dependencies>
+			 </plugin>
+
+			 <plugin>
 				 <groupId>org.codehaus.mojo</groupId>
 				 <artifactId>jaxb2-maven-plugin</artifactId>
 				 <version>2.5.0</version>
@@ -49,11 +87,11 @@
 						 <configuration>
 							 <packageName>${xsd.jaxb.generated.package.fluent}</packageName>
 							 <xjbSources>
-								 <xjbSource>src/main/resources/XSD/global.xjb</xjbSource>
-								 <xjbSource>src/main/resources/XSD/datamodel-current.xjb</xjbSource>
+								 <xjbSource>${basedir}/target/xjc-workspace/global.xjb</xjbSource>
+								 <xjbSource>${basedir}/target/xjc-workspace/datamodel-current-enriched.xjb</xjbSource>
 							 </xjbSources>
 							 <sources>
-								 <source>src/main/resources/XSD/th-test-fluent-defs.xsd</source>
+								 <source>${basedir}/target/xjc-workspace/th-test-fluent-defs.xsd</source>
 							 </sources>
 							 <outputDirectory>${basedir}/target/generated-sources/jaxb</outputDirectory>
 							 <clearOutputDir>false</clearOutputDir>

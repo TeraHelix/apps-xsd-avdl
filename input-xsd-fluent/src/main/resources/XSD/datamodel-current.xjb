@@ -7,17 +7,8 @@
                
    <jaxb:bindings schemaLocation="th-test-fluent-defs.xsd">
    
-   <!--  -->
-   
-   <jaxb:bindings node="//xs:simpleType[@name='CurrencyEnum']" multiple="true" required="false">
-        <ci:code>
-            <![CDATA[
-	@Override
-	public String toString() {
-		return this.value();
-	}
-            ]]>
-        </ci:code>
+   <!-- Will automatically get populated by XJBEnumCodeGenEnricher -->
+
     </jaxb:bindings>
-    </jaxb:bindings>
+
 </jaxb:bindings>
