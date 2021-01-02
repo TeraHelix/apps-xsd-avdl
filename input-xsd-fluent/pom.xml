@@ -92,6 +92,9 @@
 							 </xjbSources>
 							 <sources>
 								 <source>${basedir}/target/xjc-workspace/th-test-fluent-defs.xsd</source>
+								 <!--
+								 	<source>${basedir}/target/xjc-workspace/datamodel-current.xsd</source>
+								 -->
 							 </sources>
 							 <outputDirectory>${basedir}/target/generated-sources/jaxb</outputDirectory>
 							 <clearOutputDir>false</clearOutputDir>
@@ -157,11 +160,11 @@
 
 
     <dependencies>
-        
-        <dependency>
-            <groupId>io.terahelix</groupId>
-            <artifactId>terahelix-spear-core</artifactId>
-        </dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>

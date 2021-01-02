@@ -5,3 +5,5 @@
 **/.project
 **/target
 /.idea/
+/output-avdl-fluent-lib/src/main/avro/
+/output-avdl-fluent-lib/src/main/java/

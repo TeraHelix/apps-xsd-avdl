@@ -53,7 +53,7 @@ public class XJBEnumCodeGenEnricher
 	"		return descriptions;\n" +
 	" 	}";
 
-	public static final String PER_ENUM_CODE_LINE = "		val.put(##ENUM_NAME##.##ENUM_VALUE##, \"##ENUM_DESCRIPTION##\");\n";
+	public static final String PER_ENUM_CODE_LINE = "//		val.put(##ENUM_NAME##.##ENUM_VALUE##, \"##ENUM_DESCRIPTION##\");\n";
 
 
 	public static void main(String... args) throws Exception

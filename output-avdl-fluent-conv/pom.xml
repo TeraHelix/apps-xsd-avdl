@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.terahelix.apps.xsdavdl</groupId>
+		<artifactId>xsd-avdl</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+ 
+    <artifactId>output-avdl-fluent-conv</artifactId>
+    <packaging>jar</packaging>
+    <name>output-avdl-fluent-conv</name>
+
+	<properties>
+		<conv.avdl.package.name>XSD.Fluent.AVDL</conv.avdl.package.name>
+		<conv.spear.project.name>output-avdl-fluent</conv.spear.project.name>
+		<conv.spear.package.name>Generated</conv.spear.package.name>
+		<conv.target.package.name>Fluent.JAXB_AVDL.Converters</conv.target.package.name>
+		<conv.target.directory>target/generated-spear-avdl-sources/java</conv.target.directory>
+	</properties>
+
+	<build>
+		 
+<plugins>
+
+		<plugin>
+			<artifactId>maven-antrun-plugin</artifactId>
+			<executions>
+				<execution>
+					<phase>generate-sources</phase>
+					<configuration>
+						<tasks>
+							<property name="project_classpath" refid="maven.runtime.classpath" />
+							<mkdir dir="${basedir}/target/generated-spear-avdl-sources/java" />
+							<java classname="io.terahelix.xsd.avdl.AVDL_XSD_ConverterGenerator" failonerror="true" fork="true">
+								<arg value="${conv.avdl.package.name}" />
+								<arg value="${conv.spear.project.name}" />
+								<arg value="${conv.spear.package.name}" />
+								<arg value="${conv.target.package.name}" />
+								<arg value="${conv.target.directory}" />
+								<classpath>
+									<pathelement path="${project_classpath}" />
+								</classpath>
+							</java>
+						</tasks>
+					</configuration>
+					<goals>
+						<goal>run</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<executions>
+				<execution>
+					<id>package-items-up</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+					<configuration>
+						<descriptors>
+							<descriptor>src/main/assembly/assembly.xml</descriptor>
+						</descriptors>
+						<archiverConfig>
+							<compress>false</compress>
+						</archiverConfig>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+
+	</plugins>
+
+	</build>
+
+
+    <dependencies>
+        
+        <dependency>
+            <groupId>io.terahelix</groupId>
+            <artifactId>terahelix-spear-xsd-avdl-converter-gen</artifactId>
+        </dependency>
+        
+        <dependency>
+			<groupId>io.terahelix.apps.xsdavdl</groupId>
+			<artifactId>input-xsd-fluent</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.terahelix.apps.xsdavdl</groupId>
+			<artifactId>output-avdl-fluent</artifactId>
+		</dependency>
+ 
+    </dependencies>
+
+</project>

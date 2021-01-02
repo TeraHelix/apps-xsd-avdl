@@ -30,7 +30,7 @@
 
 		<!-- The version of the Spear Library to Use. May need to replace this with a
 			 production version. 1.0-SNAPSHOT is simply the latest off the development branch.
-			  Verified version is 1.0.7
+			  Verified version is 1.5.0
 			  -->
 		<terahelix-spear-version>1.0-SNAPSHOT</terahelix-spear-version>
 
@@ -40,7 +40,7 @@
 		<maven.dependency.plugin.version>3.1.1</maven.dependency.plugin.version>
 		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
 		<maven.failsafe.plugin.version>2.22.0</maven.failsafe.plugin.version>
-		<avro.version>1.9.2</avro.version>
+		<avro.version>1.10.1</avro.version>
 
 		<jaxb.version>2.3.2</jaxb.version>
 		
@@ -56,7 +56,9 @@
 		<module>input-xsd-fluent</module>
     	<module>output-avdl</module>
 		<module>output-avdl-fluent</module>
-    	<module>test-avdl-bindings</module>
+		<module>output-avdl-fluent-conv</module>
+		<module>output-avdl-fluent-lib</module>
+		<module>test-avdl-bindings</module>
     	
     </modules>
  
@@ -184,6 +186,12 @@
 			<dependency>
 				<groupId>io.terahelix</groupId>
 				<artifactId>terahelix-spear-xsd-mappers</artifactId>
+				<version>${terahelix-spear-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.terahelix</groupId>
+				<artifactId>terahelix-spear-xsd-avdl-converter-gen</artifactId>
 				<version>${terahelix-spear-version}</version>
 			</dependency>
 

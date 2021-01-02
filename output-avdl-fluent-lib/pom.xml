@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.terahelix.apps.xsdavdl</groupId>
+		<artifactId>xsd-avdl</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+ 
+    <artifactId>output-avdl-fluent-lib</artifactId>
+    <packaging>jar</packaging>
+    <name>output-avdl-fluent-lib</name>
+
+
+	<build>
+
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>src/main/avro</directory>
+							<directory>src/main/java</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-1</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>io.terahelix.apps.xsdavdl</groupId>
+									<artifactId>output-avdl-fluent-conv</artifactId>
+									<version>${project.version}</version>
+									<type>zip</type>
+									<classifier>avdl-conv-source</classifier>
+									<overWrite>true</overWrite>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>src/main</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+					
+					<execution>
+						<id>unpack-2</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>io.terahelix.apps.xsdavdl</groupId>
+									<artifactId>output-avdl-fluent</artifactId>
+									<version>${project.version}</version>
+									<type>zip</type>
+									<classifier>avdl-source</classifier>
+									<overWrite>true</overWrite>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>src/main/avro</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+					
+				</executions>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro-maven-plugin</artifactId>
+				<version>${avro.version}</version>
+				<configuration>
+					<enableDecimalLogicalType>true</enableDecimalLogicalType>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>schema</goal>
+							<goal>protocol</goal>
+							<goal>idl-protocol</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		
+	</build>
+
+    <dependencies>
+        
+        <dependency>
+    		<groupId>org.apache.avro</groupId>
+    		<artifactId>avro</artifactId>
+  		</dependency>
+        
+        <dependency>
+			<groupId>io.terahelix.apps.xsdavdl</groupId>
+			<artifactId>input-xsd-fluent</artifactId>
+		</dependency>
+ 
+    </dependencies>
+
+</project>
