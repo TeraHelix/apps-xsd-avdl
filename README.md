@@ -43,9 +43,16 @@ If you wish to substitute the example with your own XSD file, you need to be awa
 
 ```
 
-## Test Cases Examples
+## The Generated AVDL / JAXB Bridge Library
 
-TODO - add more information about tests that can be performed from the generated AVDLs (e.g. Spark, Serializations etc.)
+An auto-generated library that converts AVDL object to JAXB objects and vice versa can be found in the [output-avdl-fluent-lib](output-avdl-fluent-lib) directory. It has the following key features:
+
+* All method invocations and object constructions are generated and does not use reflection. This ensures the conversion code is performant
+* There are no dependencies on Spear libraries. This make it easier to package and ship this code as part of a large application.
+* Utility functions are provided as part of the `AVDLConversionService` to inspect AVDL to JAXB class mappings.
+
+
+
  
 
 

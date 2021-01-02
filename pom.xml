@@ -30,9 +30,9 @@
 
 		<!-- The version of the Spear Library to Use. May need to replace this with a
 			 production version. 1.0-SNAPSHOT is simply the latest off the development branch.
-			  Verified version is 1.5.0
+			  Verified version is 1.5.1
 			  -->
-		<terahelix-spear-version>1.0-SNAPSHOT</terahelix-spear-version>
+		<terahelix-spear-version>1.5.1</terahelix-spear-version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.core.version>3.3.9</maven.core.version>
