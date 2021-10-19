@@ -5,7 +5,7 @@
     <groupId>io.terahelix.apps.xsdavdl</groupId>
     <artifactId>xsd-avdl</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+	<version>2.1-SNAPSHOT</version>
     <name>xsd-avdl</name>
 
 	<properties>
@@ -26,13 +26,13 @@
 
 		<xsd.convert.targetPackage>Generated</xsd.convert.targetPackage>
 		<xsd.convert.targetDirectory>Generated</xsd.convert.targetDirectory>
-		<xsd.convert.targetNamespace></xsd.convert.targetNamespace>
+		<xsd.convert.targetNamespace>http://schemas.terahelix.io/XSD-Test</xsd.convert.targetNamespace>
 
 		<!-- The version of the Spear Library to Use. May need to replace this with a
-			 production version. 1.0-SNAPSHOT is simply the latest off the development branch.
-			  Verified version is 1.5.1
+			 production version. 2.1-SNAPSHOT is simply the latest off the development branch.
+			  Verified version is 2.0.57
 			  -->
-		<terahelix-spear-version>1.5.1</terahelix-spear-version>
+		<terahelix-spear-version>2.1-SNAPSHOT</terahelix-spear-version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.core.version>3.3.9</maven.core.version>
@@ -40,21 +40,23 @@
 		<maven.dependency.plugin.version>3.1.1</maven.dependency.plugin.version>
 		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
 		<maven.failsafe.plugin.version>2.22.0</maven.failsafe.plugin.version>
-		<avro.version>1.10.1</avro.version>
+		<avro.version>1.10.2</avro.version>
 
 		<jaxb.version>2.3.2</jaxb.version>
 		
 		<maven.compiler.initial.memory>1024M</maven.compiler.initial.memory>
 	    	<maven.compiler.max.memory>2048M</maven.compiler.max.memory>
-	    		
+
+		<org.jvnet.jaxb2_commons.jaxb2-basics.version>1.11.1</org.jvnet.jaxb2_commons.jaxb2-basics.version>
+		<org.jvnet.jaxb2_commons.jaxb2-basics-annotate>1.1.0</org.jvnet.jaxb2_commons.jaxb2-basics-annotate>
+		<org.jvnet.jaxb2_commons.jaxb2-fluent-api>3.0</org.jvnet.jaxb2_commons.jaxb2-fluent-api>
+
 	</properties>
  
     <modules>
 
 		<module>xjc-utils</module>
-    	<module>input-xsd</module>
 		<module>input-xsd-fluent</module>
-    	<module>output-avdl</module>
 		<module>output-avdl-fluent</module>
 		<module>output-avdl-fluent-conv</module>
 		<module>output-avdl-fluent-lib</module>
@@ -118,7 +120,7 @@
 			          	<meminitial>${maven.compiler.initial.memory}</meminitial>
 			        	<maxmem>${maven.compiler.max.memory}</maxmem>
 			        	<source>1.8</source>
-					<target>1.8</target>
+						<target>1.8</target>
 			        </configuration>
                 </plugin>
               
@@ -262,6 +264,24 @@
                 <artifactId>log4j-core</artifactId>
                 <version>2.13.2</version>
             </dependency>
+
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics</artifactId>
+				<version>${org.jvnet.jaxb2_commons.jaxb2-basics.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-annotate</artifactId>
+				<version>${org.jvnet.jaxb2_commons.jaxb2-basics-annotate}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-fluent-api</artifactId>
+				<version>${org.jvnet.jaxb2_commons.jaxb2-fluent-api}</version>
+			</dependency>
 
         </dependencies>
         

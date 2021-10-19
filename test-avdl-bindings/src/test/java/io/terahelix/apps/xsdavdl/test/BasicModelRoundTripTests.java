@@ -1,7 +1,6 @@
 package io.terahelix.apps.xsdavdl.test;
 
 
-
 import Generated.*;
 import io.terahelix.common.HelixLogger;
 import io.terahelix.spear.javaRuntime.util.SpearHelpers;
@@ -45,32 +44,7 @@ public class BasicModelRoundTripTests
 		logger.info(SpearHelpers.toJson(car, true));
 	}
 
-	@Test
-	public void testXMLObjectRoundTrips() throws Exception
-	{
-		Car c1 = vehicles.get(0);
-		CarRootElement c1_root = CarRootElement.Create().setCarElement(c1).build();
 
-		Assert.assertNotNull(c1);
-		Assert.assertNotNull(c1_root);
-
-		io.terahelix.apps.xsdavdl.CarRootElement jaxb_car = xmlMapper.convertToJAXBObject(c1_root);
-
-		Assert.assertNotNull(jaxb_car);
-
-		//Or go straight to the XML.
-		String jaxbXml = xmlMapper.convertToJAXBXML(jaxb_car);
-
-		logger.info("JAXB XML :: \n " + jaxbXml);
-
-		CarRootElement c1_from_xml  = xmlMapper.convertToSpearFromXML(new StringReader(jaxbXml));
-
-		Assert.assertFalse("The object should not be different instances",c1_root == c1_from_xml);
-
-		logger.info("c1_root :: \n " + SpearHelpers.toJson(c1_root, true));
-		logger.info("c1_from_xml :: \n " + SpearHelpers.toJson(c1_from_xml, true));
-
-	}
 
 
 }

@@ -19,7 +19,7 @@ Invoking the standard Maven build command (`mvn clean install`) will:
 * Read XSD Inputs from the [input-xsd/src/main/resources/XSD](input-xsd/src/main/resources/XSD) directory.
 * Produce *AVDL* Outputs to the [output-avdl/target/generated-spear-avdl-sources/avdl/.spear-avdl-source](output-avdl/target/generated-spear-avdl-sources/avdl/.spear-avdl-source) directory.
 
-You will also note that additional outputs (Python, Typescript, Java) will also be produced in the [output-avdl/target](output-avdl/target) directory. The compiled Java classes (both generated from Spear itself or from AVDL) will be produced in the `output-avdl-1.0-SNAPSHOT.jar` file.
+You will also note that additional outputs (Python, Typescript, Java) will also be produced in the [output-avdl/target](output-avdl/target) directory. The compiled Java classes (both generated from Spear itself or from AVDL) will be produced in the `output-avdl-2.1-SNAPSHOT.jar` file.
 
 ## Key Variables
 
