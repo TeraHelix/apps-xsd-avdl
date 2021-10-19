@@ -38,6 +38,7 @@
         <server>
             <id>dist</id>
             <username>dist</username>
+            <!-- This has to be set up on the github -->
             <password>${env.TOKEN_PACKAGE_READ_WRITE_DELETE}</password>
             <configuration>
                 <httpConfiguration>
