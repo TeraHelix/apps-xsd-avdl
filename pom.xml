@@ -44,7 +44,7 @@
 
 		<jaxb.version>2.3.2</jaxb.version>
 
-		<log4j.version>2.17.0</log4j.version>
+		<log4j.version>2.17.1</log4j.version>
 
 		<maven.compiler.initial.memory>1024M</maven.compiler.initial.memory>
 		<maven.compiler.max.memory>2048M</maven.compiler.max.memory>
