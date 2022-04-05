@@ -12,9 +12,9 @@
             <id>default</id>
             <repositories>
                 <repository>
-                    <id>dist</id>
+                    <id>terahelix-spear</id>
                     <name>TeraHelix Repository</name>
-                    <url>https://terahelix.maven.distrepos.com/terahelix</url>
+                    <url>https://terahelix-575680413757.d.codeartifact.us-east-1.amazonaws.com/maven/spear/</url>
                     <snapshots>
                         <enabled>true</enabled>
                     </snapshots>
@@ -22,9 +22,9 @@
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
-                    <id>dist</id>
+                    <id>terahelix-spear</id>
                     <name>TeraHelix Spear Repository</name>
-                    <url>https://terahelix.maven.distrepos.com/terahelix</url>
+                    <url>https://terahelix-575680413757.d.codeartifact.us-east-1.amazonaws.com/maven/spear/</url>
                     <snapshots>
                         <enabled>true</enabled>
                     </snapshots>
@@ -36,8 +36,8 @@
 
     <servers>
         <server>
-            <id>dist</id>
-            <username>dist</username>
+            <id>terahelix-spear</id>
+            <username>aws</username>
             <!-- This has to be set up on the github -->
             <password>${env.TOKEN_PACKAGE_READ_WRITE_DELETE}</password>
             <configuration>

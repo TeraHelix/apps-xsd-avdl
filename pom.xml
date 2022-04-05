@@ -291,14 +291,15 @@
 
 	<distributionManagement>
 		<repository>
-			<id>dist</id>
-			<url>https://terahelix.maven.distrepos.com/terahelix</url>
+			<id>terahelix-spear</id>
+			<url>https://terahelix-575680413757.d.codeartifact.us-east-1.amazonaws.com/maven/spear/</url>
 		</repository>
 		<snapshotRepository>
-			<id>dist</id>
-			<url>https://terahelix.maven.distrepos.com/terahelix</url>
+			<id>terahelix-spear</id>
+			<url>https://terahelix-575680413757.d.codeartifact.us-east-1.amazonaws.com/maven/spear/</url>
 		</snapshotRepository>
 	</distributionManagement>
+
 
 
 </project>
