@@ -292,11 +292,11 @@
 	<distributionManagement>
 		<repository>
 			<id>terahelix-spear</id>
-			<url>https://terahelix-575680413757.d.codeartifact.us-east-1.amazonaws.com/maven/spear/</url>
+			<url>https://pkgs.dev.azure.com/terahelix/Spear/_packaging/Spear/maven/v1</url>
 		</repository>
 		<snapshotRepository>
 			<id>terahelix-spear</id>
-			<url>https://terahelix-575680413757.d.codeartifact.us-east-1.amazonaws.com/maven/spear/</url>
+			<url>https://pkgs.dev.azure.com/terahelix/Spear/_packaging/Spear/maven/v1</url>
 		</snapshotRepository>
 	</distributionManagement>
 
